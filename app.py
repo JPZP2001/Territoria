@@ -12,8 +12,7 @@ try:
         user="usuario",
         password="password",
         host="localhost",
-        database="Georregias"
-
+        database="georregias"
     )
 except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
@@ -149,7 +148,7 @@ def on_form_change(switches_value):
     elif switches_value == [2]:
        #print("passed through (2)")
        
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='911';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='911';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -176,7 +175,7 @@ def on_form_change(switches_value):
     elif switches_value == [3]:
         #print("passed through (3)")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='peligro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='criminalidad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -194,7 +193,7 @@ def on_form_change(switches_value):
 
     elif switches_value == [4]:
         #print("passed through (4)")
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='seguro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='seguridad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -213,7 +212,7 @@ def on_form_change(switches_value):
     elif switches_value == [1, 2] or switches_value == [2, 1]:
         #print("passed through (1, 2)")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='911';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='911';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -248,7 +247,7 @@ def on_form_change(switches_value):
     elif switches_value == [1, 3] or switches_value == [3, 1]:
         #print("passed through (1, 3)")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='peligro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='criminalidad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -276,7 +275,7 @@ def on_form_change(switches_value):
     elif switches_value == [1, 4] or switches_value == [4, 1]:
         #print("passed through (1, 4)")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='seguro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='seguridad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -304,7 +303,7 @@ def on_form_change(switches_value):
     elif switches_value == [2, 3] or switches_value == [3, 2]:
         #print("passed through (2, 3)")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='911';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='911';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -324,7 +323,7 @@ def on_form_change(switches_value):
             }
         ))
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='peligro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='criminalidad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -343,7 +342,7 @@ def on_form_change(switches_value):
     elif switches_value == [2, 4] or switches_value == [4, 2]:
         #print("passed through (2-4)")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='911';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='911';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -363,7 +362,7 @@ def on_form_change(switches_value):
             }
         ))
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='seguro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='seguridad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -382,7 +381,7 @@ def on_form_change(switches_value):
     elif switches_value == [3, 4] or switches_value == [4, 3]:
         #print("passed through (3-4)")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='seguro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='seguridad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -395,7 +394,7 @@ def on_form_change(switches_value):
             hoverinfo="none"
         ))
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='peligro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='criminalidad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -415,7 +414,7 @@ def on_form_change(switches_value):
             or switches_value == [2, 3, 1] or switches_value == [3, 1, 2] or switches_value == [3, 2, 1]:
         #print("passed through (1, 2, 3)")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='911';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='911';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -435,7 +434,7 @@ def on_form_change(switches_value):
             }
         ))
 
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='peligro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='criminalidad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -463,7 +462,7 @@ def on_form_change(switches_value):
             or switches_value == [2, 4, 1] or switches_value == [4, 1, 2] or switches_value == [4, 2, 1]:
         #print("passed through (1, 2, 4)")
 
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='911';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='911';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -483,7 +482,7 @@ def on_form_change(switches_value):
             }
         ))
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='seguro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='seguridad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -512,7 +511,7 @@ def on_form_change(switches_value):
             or switches_value == [3, 4, 1] or switches_value == [4, 1, 3] or switches_value == [4, 3, 1]:
         #print("passed through (1, 3, 4)")
 
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='seguro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='seguridad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -525,7 +524,7 @@ def on_form_change(switches_value):
             hoverinfo="none"
         ))
 
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='peligro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='criminalidad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -553,7 +552,7 @@ def on_form_change(switches_value):
             or switches_value == [3, 4, 2] or switches_value == [4, 2, 3] or switches_value == [4, 3, 2]:
         #print("passed through (2, 3, 4)")
 
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='911';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='911';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -573,7 +572,7 @@ def on_form_change(switches_value):
             }
         ))
 
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='seguro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='seguridad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -585,7 +584,7 @@ def on_form_change(switches_value):
             hoverinfo="none"
         )
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='peligro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='criminalidad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -604,7 +603,7 @@ def on_form_change(switches_value):
     elif len(switches_value) == 4:
         #print("passed though todas")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='911';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='911';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -624,7 +623,7 @@ def on_form_change(switches_value):
             }
         ))
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='seguro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='seguridad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -636,7 +635,7 @@ def on_form_change(switches_value):
             hoverinfo="none"
         )
 
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='peligro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='criminalidad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -663,7 +662,7 @@ def on_form_change(switches_value):
     elif len(switches_value) == 0:
         #print("passed through (0)")
         
-        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM Report WHERE type='peligro';")
+        cur.execute("SELECT SUBSTRING_INDEX(location,',', 1) AS lat, SUBSTR(location, POSITION(',' IN  location)+2, LENGTH(location)) AS lon FROM record WHERE type='criminalidad';")
         myresult = cur.fetchall()
         latitud = list(map(lambda x: x[0], myresult))
         longitud = list(map(lambda x: x[1], myresult))
@@ -679,10 +678,10 @@ def on_form_change(switches_value):
 
         return placeholder
 
-app.callback(
-    Output("mapa-movil", "figure"),
-    Input("switches-input-movil", "value")
-)(on_form_change)
+# app.callback(
+#     Output("mapa-movil", "figure"),
+#     Input("switches-input-movil", "value")
+# )(on_form_change)
 
 app.callback(
     Output("mapa-desktop", "figure"),
