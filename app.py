@@ -678,10 +678,10 @@ def on_form_change(switches_value):
 
         return placeholder
 
-# app.callback(
-#     Output("mapa-movil", "figure"),
-#     Input("switches-input-movil", "value")
-# )(on_form_change)
+app.callback(
+    Output("mapa-movil", "figure"),
+    Input("switches-input-movil", "value")
+)(on_form_change)
 
 app.callback(
     Output("mapa-desktop", "figure"),
