@@ -17,10 +17,9 @@ from dash import ctx
 # Connect to MariaDB Platform
 try:
     conn = mariadb.connect(
-        user="root",
-        password="root",
+        user="usuario",
+        password="password",
         host="localhost",
-        port=3307,
         database="georregias"
     )
 except mariadb.Error as e:
@@ -695,10 +694,10 @@ def on_form_change(switches_value):
 
         return placeholder
 
-# app.callback(
-#     Output("mapa-movil", "figure"),
-#     Input("switches-input-movil", "value")
-# )(on_form_change)
+app.callback(
+    Output("mapa-movil", "figure"),
+    Input("switches-input-movil", "value")
+)(on_form_change)
 
 app.callback(
     Output("mapa-desktop", "figure"),
