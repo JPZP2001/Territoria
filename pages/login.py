@@ -30,7 +30,6 @@ password_input = html.Div(
             placeholder="Ingresa tu contraseña",
             className="form_field_login",
             maxLength=50),
-            
         #Alert
          dbc.FormFeedback("Ingrese una contraseña válida.",
                           type="invalid",
@@ -42,6 +41,7 @@ password_input = html.Div(
 
 # Page layout
 layout = dbc.Container([
+
     #Heading
     dbc.Navbar(
         dbc.Container([
@@ -80,15 +80,17 @@ layout = dbc.Container([
                     ),
                 ], className="text_center"
              ),
-             html.Div (id="login_form"),
 
-             #Password recovery link
+             html.Div(id="login_form"),
+
+            #Password recovery link
             html.Div(
-                [
-                    html.A('¿Olvidaste tu contraseña?', href='/password_recovery', className="password_recovery_link")
-                 ], className="password_recovery_div")
-             
-    ],className="login_div"),
+                  [
+                    html.A('¿Olvidaste tu contraseña?', href='/password_recovery', className="password_recovery_link"),
+                  ], className="password_recovery_div"),
+
+          
+    ],className="login_form_div"),
 
      
     
