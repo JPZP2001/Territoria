@@ -3,7 +3,7 @@
     text-align:center;
     font-size:40px;
     margin-bottom: 20px;
-    margin-top:55px;
+    margin-top:20px;
 }
 
 /*Button*/
@@ -35,7 +35,7 @@
     text-align:center;
 }
 
-/*Margin top 20px*/
+/*Margin 20px*/
 .margin{
     margin-top:20px;
     margin-bottom:20px;
@@ -45,6 +45,12 @@
   margin:auto;
 
 }
+
+
+.margin_bottom_20{
+    margin-bottom:20px !important;
+}
+
 /*LOGIN PAGE*/
 
 input{
@@ -52,19 +58,29 @@ input{
 }
 
 /*Form fields*/
-.form_field_login{
+.form_field_login, .form_field_password_recovery{
     height: 60px;
     margin: auto;
 }
 
 /*Login form div*/
-.login_div{
+.login_form_div,.password_recovery_page_div{
     margin:auto;
-    width:400px;
+    width:450px;
+    margin-top:50px;
+}
+
+.password_input_div{
+    margin-bottom:5px !important;
 }
 
 .btn_margin{
-    margin-top:10px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.margin_bottom_20{
+    margin-bottom:20px;
 }
 
 .bad_c_alert{
@@ -73,14 +89,13 @@ input{
 
 /*Password recovery link*/
 .password_recovery_link, .home_link{
-    font-size:15px;
+    font-size: 15px;
     color:#8D65C5;
     text-align: center;
 }
 
 .password_recovery_div{
     text-align: center;
-    margin-top:15px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -107,12 +122,17 @@ input{
 
 
  /*Main div*/
-.main_div{
-    text-align:end;
+.index_div{
     margin-bottom:20px;
-    margin:auto;
+    margin-left:auto;
+    margin-right:auto;
     width:85%;
 }
+
+.index_buttons_div{
+    text-align:end;
+}
+
 
 .sign_out_btn{
     text-decoration: none;
@@ -142,7 +162,7 @@ table{
 th{
     background-color: #57348E !important;
     color:white;
-    height:35px !important;
+    height:35px !important; 
     font-size:16px !important;
 }
 
@@ -174,6 +194,12 @@ i{
     text-align:center;
 }
 
+.password_recovery_legend{
+    font-size:16px;
+    margin-bottom:0px;
+    text-align:center;
+}
+
 
 /*PAGE NOT FOUND*/
 .title_404{
@@ -190,6 +216,7 @@ i{
 
 .notice{
     font-size:24px;
+    margin-bottom:20px;
 }
 
 .navbar{
@@ -197,13 +224,8 @@ i{
     height:55px !important;
 }
 
-
 .margin_top_table{
     margin-top:70px;
-}
-
-.border{
-   padding:0px !important;
 }
 
 
@@ -223,7 +245,36 @@ i{
 /*LOGIN*/
 
 @media (max-width: 576px) {
-  .login_div{
+  .login_form_div, .password_recovery_page_div{
     width:70% ;
   }
+  .index_buttons_div{
+    text-align:center;
+   }
+   th{
+    font-size:10px  !important;
+   }
+   td{
+    font-size:10px !important;
+   }
+   table{
+        max-width: none;
+        table-layout: fixed;
+        word-wrap: break-word;
+   }
+   
+}
+
+
+@media(max-width:768px){
+    th{
+        font-size:13px  !important;
+       }
+    td{
+        font-size:12px  !important;
+    }
+    .index_div{
+        width:100%;
+    }
+
 }
