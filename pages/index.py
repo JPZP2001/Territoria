@@ -14,8 +14,8 @@ type_input = html.Div(
                             dcc.Dropdown(id="type",
                                          placeholder="Selecciona un tipo",
                                          options=[
-                                                    {"label": "Peligro", "value":"Peligro"},
-                                                    {"label": "Seguro", "value": "Seguro"},
+                                                    {"label": "Criminalidad", "value":"criminalidad"},
+                                                    {"label": "Seguridad", "value": "seguridad"},
                                                 ],
                                          className="form_field_record",
                                          style={'height':40,'fontSize':16}),
@@ -60,8 +60,8 @@ type_filter_input= html.Div(
                                 dcc.Dropdown(id="type_filter",
                                             placeholder="Cualquiera",
                                             options=[
-                                                        {"label": "Peligro", "value":"Peligro"},
-                                                        {"label": "Seguro", "value": "Seguro"},
+                                                        {"label": "Criminalidad", "value":"criminalidad"},
+                                                        {"label": "Seguridad", "value": "seguridad"},
                                                     ],
                                             className="form_field_record",
                                             style={'height':40,'fontSize':16}),

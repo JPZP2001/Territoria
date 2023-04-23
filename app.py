@@ -17,9 +17,10 @@ from dash import ctx
 # Connect to MariaDB Platform
 try:
     conn = mariadb.connect(
-        user="usuario",
-        password="password",
+        user="root",
+        password="root",
         host="localhost",
+        port=3307,
         database="georregias"
     )
 except mariadb.Error as e:
@@ -694,10 +695,10 @@ def on_form_change(switches_value):
 
         return placeholder
 
-app.callback(
-    Output("mapa-movil", "figure"),
-    Input("switches-input-movil", "value")
-)(on_form_change)
+# app.callback(
+#     Output("mapa-movil", "figure"),
+#     Input("switches-input-movil", "value")
+# )(on_form_change)
 
 app.callback(
     Output("mapa-desktop", "figure"),
@@ -964,7 +965,7 @@ def redirect_after_alert(change):
 #Returns the html table of the given data
 def create_table(data):
     table_records = []
-    table_headers=html.Tr([html.Th("Id"),html.Th("Tipo"),html.Th("Ubicación"),html.Th("Fecha de admisión"),html.Th("Registrado por"),html.Th("Acciones")])
+    table_headers=html.Tr([html.Th("id"),html.Th("Tipo"),html.Th("Ubicación"),html.Th("Fecha de admisión"),html.Th("Registrado por"),html.Th("Acciones")])
     for record in data:
         record_cols = [html.Td(str(col)) for col in record]
        # link_col = html.Td(html.A("Eliminar",id="delete_record_button",className="delete_record_btn",href='/delete_record/%s' % (str(record[0]))))
