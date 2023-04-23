@@ -88,7 +88,7 @@ app.layout = html.Div([
 app.config['suppress_callback_exceptions']=True
 
 #Call to pages 
-from pages import login,index,password_recovery, sent_mail,home,territoria,seccionvioleta,page_not_found, delete_record
+from pages import login,index,password_recovery, sent_mail,home,territoria,seccionvioleta,page_not_found
 
 
 # Navbar - Callback
@@ -704,19 +704,20 @@ app.callback(
     Input("switches-input-desktop", "value")
 )(on_form_change)
 
-#ACCESING PAGES
-
 #Deleting records route (plan b por si no se puede con dash)
 @app.server.route("/delete_record/<int:id>",methods=['GET'])
 def page_delete_record(id):
-        cur.execute("CALL check_record(%s)",(id,))
-        data=cur.fetchone()
-        if data[0]:
-            cur.execute('CALL get_record(%s)', (id,))
-            table=cur.fetchone()
-            return render_template('delete.html', record=table)
-        else:
+        if 'user' not in session:
             return redirect('/page_not_found')
+        else:
+            cur.execute("CALL check_record(%s)",(id,))
+            data=cur.fetchone()
+            if data[0]:
+                cur.execute('CALL get_record(%s)', (id,))
+                table=cur.fetchone()
+                return render_template('delete.html', record=table)
+            else:
+                return redirect('/page_not_found')
 
 
 #Based on the path, returns a page's layout
@@ -733,7 +734,11 @@ def display_page(pathname):
     if pathname=="/seccionvioleta":
         return seccionvioleta.layout
     if pathname=="/login":
-        return login.layout, False
+        if 'user' in session:
+            redirect('/index')
+            return index.layout
+        else:
+            return login.layout
     if pathname=="/password_recovery":
         return password_recovery.layout
     if pathname=="/index":
@@ -741,11 +746,8 @@ def display_page(pathname):
             return login.layout
         else:
             return index.layout
-    if pathname=='/delete_record':
-            return delete_record.layout
     else:
         return page_not_found.layout
-        
 #LOGIN
 
 #Checks the conditions the email has to fulfill
