@@ -34,7 +34,7 @@ layout = dbc.Container([
     ),
 
     #Title
-    html.H1("Lo sentimos.", className="center title_404"),
+    html.H1("Lo sentimos.", className="center title title_404"),
 
     #Notice
     html.Div(
