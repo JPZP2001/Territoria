@@ -18,7 +18,7 @@ type_input = html.Div(
                                                     {"label": "Seguro", "value": "Seguro"},
                                                 ],
                                          className="form_field_record",
-                                         style={'height':40}),
+                                         style={'height':40,'fontSize':16}),
                         ],
                         className="mb-3"
             )
@@ -29,7 +29,7 @@ latitude_input = html.Div(
                                           id="latitude", 
                                           placeholder="Ingresa la latitud",
                                           className="form_field_record",
-                                          maxLength=19),
+                                          maxLength=19,style={'height':40,'fontSize':16}),
 
                                 #Alert
                                 dbc.FormFeedback("Ingresa una latitud válida.", type="invalid")
@@ -43,7 +43,7 @@ longitude_input = html.Div(
                                           id="longitude", 
                                           placeholder="Ingresa la longitud",
                                           className="form_field_record ",
-                                          maxLength=19),
+                                          maxLength=19,style={'height':40,'fontSize':16}),
 
                                 #Alert
                                 dbc.FormFeedback("Ingresa una longitud válida.",type="invalid")
@@ -64,7 +64,7 @@ type_filter_input= html.Div(
                                                         {"label": "Seguro", "value": "Seguro"},
                                                     ],
                                             className="form_field_record",
-                                            style={'height':40}),
+                                            style={'height':40,'fontSize':16}),
                             ],
                             className="mb-3"
                     )    
@@ -78,7 +78,7 @@ day_filter_input= html.Div(
                                             placeholder="Día",
                                             options=day_options,
                                             className="form_field_record",
-                                            style={'height':40}),
+                                            style={'height':40,'fontSize':16}),
                             ],
                             className="mb-3"
                     )    
@@ -102,7 +102,7 @@ month_filter_input= html.Div(
                                                         {"label": "Diciembre", "value": "12"},
                                                     ],
                                             className="form_field_record",
-                                            style={'height':40}),
+                                            style={'height':40,'fontSize':16}),
                             ],
                             className="mb-3"
                     )       
@@ -119,7 +119,7 @@ year_filter_input= html.Div(
                                                         {"label": "2024", "value": "2024"},
                                                     ],
                                             className="form_field_record",
-                                            style={'height':40}),
+                                            style={'height':40,'fontSize':16}),
                             ],
                             className="mb-3"
                     ) 
@@ -160,44 +160,7 @@ layout = dbc.Container([
                           is_open=False,
                           duration=7000)
     ),
-
-    #Title
-    html.H1("Registros", className="title"),
-
-
-   
-
-    #Buttons div
-    html.Div(       
-                [ 
-                    #Add record button
-                    dbc.Button(
-                                html.Span(
-                                            [
-                                                html.I(className="fas fa-plus"),
-                                                " Agregar"
-                                            ]
-                                ), 
-                                id="open_add_record_modal",n_clicks=0, className="me-2 submit_btn margin"
-                    ),
-                        
-                    #Filter table records button
-                    dbc.Button(
-                                html.Span(
-                                            [
-                                                html.I(className="fas fa-filter"),
-                                                "  Filtrar"
-                                            ]
-                                ), 
-                                id="open_filter_records_modal",n_clicks=0, className="submit_btn margin"
-                    )
-
-                ],
-
-                className="main_div" 
-    ),
-
-                
+       
     #Add record modal
     dbc.Modal(
                 [
@@ -286,9 +249,7 @@ layout = dbc.Container([
                                                                 dbc.Col(dbc.Button("Confirmar" ,id="confirm_delete_button",n_clicks=0)),
                                                                 dbc.Col(dbc.Button("Cancelar", id="cancel_button",n_clicks=0))
                                                             ]
-                                                )
-                                                            
-                                                
+                                                )    
                                     )         
                     ),     
                 ],
@@ -297,12 +258,56 @@ layout = dbc.Container([
     ),
 
 
-    #Security records table
-    html.Div(id='table'),
-    
-    html.Br(),
-    html.Br(),
-    html.Br()
 
+   
+
+    #Main div
+    html.Div(       
+                [ 
+    
+                    #Title
+                    html.H1("Registros", className="title"),
+
+                   
+                   html.Div(
+                            [
+    
+                                #Add record button
+                                dbc.Button(
+                                            html.Span(
+                                                        [
+                                                            html.I(className="fas fa-plus"),
+                                                            " Agregar"
+                                                        ]
+                                            ), 
+                                            id="open_add_record_modal",n_clicks=0, className="me-2 submit_btn margin_bottom_20"
+                                ),
+                                    
+                                #Filter table records button
+                                dbc.Button(
+                                            html.Span(
+                                                        [
+                                                            html.I(className="fas fa-filter"),
+                                                            "  Filtrar"
+                                                        ]
+                                            ), 
+                                            id="open_filter_records_modal",n_clicks=0, className="submit_btn margin_bottom_20"
+                                )
+    
+                            ], className="index_buttons_div"
+                   ),
+                    
+                ],
+
+                className="index_div" 
+    ),
+   
+    #Security records table
+    html.Div(id='table',className="table")
+   ,
+    html.Br(),
+    html.Br(),
+    html.Br(),
+      
 ], fluid=False)
 
