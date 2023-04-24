@@ -7,11 +7,15 @@ dash.register_page(__name__, path="/password_recovery")
 #Password recovery form inputs
 email_input = html.Div(
     [
-        dbc.Label("Email", html_for="recoveryEmail", className="form_label"),
+        dbc.Label("Email", html_for="recovery_email", className="form_label"),
         dbc.Input(type="email",
-                  id="recoveryEmail", 
+                  id="recovery_email", 
                   placeholder="Ingresa tu correo electrónico",
                   className="mb-3 form_field_password_recovery"),   
+        #Alert
+        dbc.FormFeedback("Ingrese un correo electrónico válido.",
+                          type="invalid",
+        ),
     ],
     className="mb-3",
 )
@@ -43,6 +47,8 @@ layout = dbc.Container([
         ]), color="#FFFFFF", dark=False,
     ),
 
+    #Alert 
+    html.Div(dbc.Alert("El correo ingresado no esta asociado a ninguna cuenta.", color="danger", id="bad_email_alert",className="bad_c_alert",is_open=False, duration=10000)),
 
     #Main Div
     html.Div([
@@ -56,11 +62,12 @@ layout = dbc.Container([
 
 
             dbc.Form([email_input]),
+            html.Div(id="password_recovery_form"),
 
              html.Div(
                 [
                     dbc.Button(
-                        "Enviar email", id="submitBtn", className="me-2 submit_btn btn_margin",
+                        "Enviar email", id="password_recovery_submit_button", className="me-2 submit_btn btn_margin",
                     ),
                 ], className="center"
              )
