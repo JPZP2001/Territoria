@@ -75,13 +75,13 @@ input{
 }
 
 /*Form fields*/
-.form_field_login, .form_field_password_recovery{
+.form_field_login, .form_field_password_recovery, .form_field_password_restore{
     height: 60px;
     margin: auto;
 }
 
 /*Login form div*/
-.login_form_div,.password_recovery_page_div{
+.login_form_div,.password_recovery_page_div,.restore_password_main_div{
     margin:auto;
     width:450px;
     margin-top:50px;
@@ -121,6 +121,7 @@ input{
     color:#724CA9 !important;
 }
 
+
 /*Index*/
 
 /*Form fields*/
@@ -136,7 +137,6 @@ input{
 .margin_7{
   margin-bottom:7px;
 }
-
 
  /*Main div*/
 .index_div{
@@ -259,14 +259,49 @@ i{
     margin-bottom:20px;
 }
 
-    
+
+.restore_password_form_div{
+    display:flex;
+    flex-direction:column;
+    margin:auto;
+}
+
+
+.restore_password_buttons_div{
+    text-align:center;
+    margin:auto;
+}
+
+.restore_password_input{
+    width:100%;
+    border-radius:5px;
+    border:1px solid #dadfe3;
+}
+
+.margin_16{
+    margin-bottom:16px;
+  }
+
+
+.restore_password_button{
+    margin-top:37px;
+    width:95px;
+}
+
+.restore_password_input::placeholder {
+    padding-left:10px;
+   
+ }
+  
+
+
 
 /*MEDIA QUERIES*/
 
 /*LOGIN*/
 
 @media (max-width: 576px) {
-  .login_form_div, .password_recovery_page_div{
+  .login_form_div, .password_recovery_page_div,.restore_password_form_div, .restore_password_main_div{
     width:70% ;
   }
   .index_buttons_div{
@@ -303,6 +338,6 @@ i{
 
 @media(min-width:768px){
     .shrink{
-        width:50%;
+        width:600px!important;
     }
 }
