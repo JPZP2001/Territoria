@@ -1147,11 +1147,11 @@ def create_table(data):
         record_cols = [html.Td(str(col)) for col in record]
         # link_col = html.Td(html.A("Eliminar",id="delete_record_button",className="delete_record_btn",href='/delete_record/%s' % (str(record[0]))))
         link_col = html.Td(
-            html.Button(
+            html.A(
                 "X",
                 n_clicks=0,
                 className="delete_record_btn",
-                id="delete_record_%s" % (str(record[0])),
+                href="delete_record/%s" % (str(record[0])),
             )
         )
         table_records.append(html.Tr(record_cols + [link_col]))
