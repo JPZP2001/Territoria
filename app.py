@@ -1175,6 +1175,31 @@ def sign_out(clicked):
         session.pop("user", None)
         return "/login"
     raise PreventUpdate
+    
+#PASSWORD RECOVERY
+
+#Validate email form input : If the input is empty, the submit button is disabled
+@app.callback(
+    Output("password_recovery_submit_button", "disabled"),
+    Input("recovery_email", "value"))
+
+def password_recovery_input_validation(email):
+        if email is None or check_email(email):
+            return True
+        return False
+
+#Recovery email input feedback : If the email is not valid, feedback will be shown to the user
+@app.callback(
+    Output("recovery_email", "invalid"),
+    Input("recovery_email", "value"),
+    prevent_initial_call=True
+)
+
+def show_password_recovery_email_feedback(email):
+    if check_email(email):
+        return True
+    return False
+
 
 
 if __name__ == "__main__":
