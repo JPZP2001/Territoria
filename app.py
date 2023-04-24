@@ -840,21 +840,8 @@ app.callback(
     Output("mapa-desktop", "figure"), Input("switches-input-desktop", "value")
 )(on_form_change)
 
-# Deleting records route (plan b por si no se puede con dash)
-@app.server.route("/delete_record/<int:id>", methods=["GET"])
-def page_delete_record(id):
-    if "user" not in session:
-        return redirect("/page_not_found")
-    else:
-        cur.execute("CALL check_record(%s)", (id,))
-        data = cur.fetchone()
-        if data[0]:
-            cur.execute("CALL get_record(%s)", (id,))
-            table = cur.fetchone()
-            return render_template("delete.html", record=table)
-        else:
-            return redirect("/page_not_found")
 
+#ACCESING PAGES
 
 # Based on the path, returns a page's layout
 @app.callback(Output("page-content", "children"), Input("url", "pathname"))
@@ -881,6 +868,38 @@ def display_page(pathname):
     else:
         return page_not_found.layout
 
+#Deleting records route
+@app.server.route("/delete_record/<int:id>",methods=['GET'])
+def page_delete_record(id):
+        if 'user' not in session:
+            return redirect('/page_not_found')
+        else:
+            cur.execute("CALL check_record(%s)",(id,))
+            data=cur.fetchone()
+            if data[0]:
+                cur.execute('CALL get_record(%s)', (id,))
+                table=cur.fetchone()
+                return render_template('delete.html', record=table)
+            else:
+                return redirect('/page_not_found')
+
+#When cancelling a records delete request, redirects to index
+@app.server.route('/cancel')
+def cancel_delete_record():
+    if 'user' not in session:
+            return redirect('/page_not_found')
+    else:
+       return redirect('/index')
+    
+#Delete record from the db
+@app.server.route('/delete/<int:id>',methods=['POST'])
+def execute_delete_record(id):
+    if 'user' not in session:
+        return redirect('/page_not_found')
+    else:
+        cur.execute("CALL delete_record(%s)",(id,))
+        conn.commit()
+        return redirect('/index')
 
 # LOGIN
 
