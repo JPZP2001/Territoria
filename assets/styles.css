@@ -292,9 +292,10 @@ i{
     padding-left:10px;
    
  }
-  
 
-
+.head_margin{
+    margin-top:0px !important;
+}
 
 /*MEDIA QUERIES*/
 
