@@ -297,6 +297,9 @@ i{
     margin-top:0px !important;
 }
 
+.template_label{
+    margin-bottom:8px;
+}
 /*MEDIA QUERIES*/
 
 /*LOGIN*/
