@@ -55,7 +55,7 @@ layout = dbc.Container([
 
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
 
-        ]), color="#FFFFFF", dark=False,
+        ]), color="#FFFFFF", dark=False, className="head_margin"
     ),
     
 
