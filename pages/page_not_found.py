@@ -30,7 +30,7 @@ layout = dbc.Container([
                 id="navbar-collapse", navbar=True,
             ),
 
-        ]), color="#FFFFFF", dark=False,
+        ]), color="#FFFFFF", dark=False, className="head_margin"
     ),
 
     #Title
