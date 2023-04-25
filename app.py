@@ -1062,7 +1062,7 @@ def longitude_validation(longitude):
 
 # Filter records modal :  Allows the user to open the modal to filter the records
 @app.callback(
-    Output("filter_records_modal", "is_open"),
+    Output("filter_records_modal", "is_open", allow_duplicate=True),
     Input("open_filter_records_modal", "n_clicks"),
     State("filter_records_modal", "is_open"),
     prevent_initial_call=True,
@@ -1075,7 +1075,7 @@ def toggle_filter_records_modal(n1, is_open):
 
 # Show records:  Shows the records in the table by default when accesing index but also when using filters
 @app.callback(
-    Output("table", "children"),
+    [Output("table", "children"),Output("filter_records_modal","is_open")],
     [
         Input("filter_records_button", "n_clicks"),
         State("type_filter", "value"),
@@ -1099,10 +1099,10 @@ def show_records(n, type_filter, day_filter, month_filter, year_filter):
             (type_filter, day_filter, month_filter, year_filter),
         )
         data = cur.fetchall()
-        return create_table(data)
+        return create_table(data), False
     cur.execute("CALL obtain_records()")
     data = cur.fetchall()
-    return create_table(data)
+    return create_table(data), False
 
 
 # Add record form : Inserts the given information as a record in the db and shows succesful alert
