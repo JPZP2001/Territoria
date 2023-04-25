@@ -72,8 +72,9 @@ layout = html.Div([
 
             dbc.Collapse(
                 dbc.Nav([
+                    dbc.NavItem(dbc.NavLink("Iniciar sesión", href="/login")),
                     dbc.NavItem(dbc.NavLink("Territoria", href="/territoria")),
-                    dbc.NavItem(dbc.NavLink("Sección Violeta", href="/seccionvioleta"))
+                    dbc.NavItem(dbc.NavLink("Sección Violeta", href="/seccionvioleta"))  
                 ], className="ms-auto", navbar=True),
                 id="navbar-collapse", navbar=True,
             )
