@@ -108,12 +108,12 @@ layout = html.Div([
             # Sidebar
             dbc.Offcanvas(
                 [
-                    html.Span(
+                    html.P(
                         "Territoria es un mapa que visualiza los datos oficiales de violencia de género a"
                         "partir de las llamadas del 911 y la percepción de seguridad de las mujeres en el espacio "
                         "público."
                     ),
-                    html.Span([
+                    html.P([
                         "Conoce más sobre el proyecto ",
                         html.A(
                             "aquí",
@@ -141,12 +141,12 @@ layout = html.Div([
         # Sidebar
         dbc.Col([
             html.H4("Territoria", className = "px-4 pt-3"),
-            html.Span(
+            html.P(
                 "Territoria es un mapa que visualiza los datos oficiales de violencia de género a"
                 "partir de las llamadas del 911 y la percepción de seguridad de las mujeres en el espacio "
                 "público.", className = "px-4"
             ),
-            html.Span([
+            html.P([
                 "Conoce más sobre el proyecto ",
                 html.A(
                     "aquí",
