@@ -155,7 +155,7 @@ layout = dbc.Container([
                 ], className="ms-auto", navbar=True),
                 id="navbar-collapse", navbar=True,
             )       
-        ]), color="#FFFFFF", dark=False,
+        ]), color="#FFFFFF", dark=False, className="head_margin"
     ),
 
     # Record added successfully alert
@@ -230,25 +230,6 @@ layout = dbc.Container([
         is_open=False
     ),
 
-    # Delete records confirmation
-    dbc.Modal(
-        [
-            dbc.ModalHeader(dbc.ModalTitle("Confirmar eliminación")),
-            dbc.ModalBody(
-                html.Div(
-                    # Buttons
-                    dbc.Row(
-                        [
-                            dbc.Col(dbc.Button("Cancelar", id="cancel_button", className="mr-auto", n_clicks=0)),
-                            dbc.Col(dbc.Button("Confirmar", id="confirm_delete_button", className="danger", n_clicks=0))
-                        ]
-                    )
-                )
-            ),
-        ],
-        id="delete_record_modal",
-        is_open=False
-    ),
 
     # Main div
     html.Div(
